@@ -4,6 +4,8 @@
     .signup {
         @media (min-width: $tablet-breakpoint) {
             padding: 50px 200px 100px;
+            display: flex;
+            flex-direction: column;
         }
 
         &__header {
@@ -14,11 +16,6 @@
 
             img {
                 width: 200px;
-                margin-bottom: 15px;
-            }
-
-            p {
-                font-family: markpro-medium;
             }
         }
 
@@ -29,6 +26,25 @@
 
             @media (min-width: $tablet-breakpoint) {
                 padding: 60px;
+                max-width: 1040px;
+                margin: auto;
+            }
+
+            &__title {
+                font-family: markpro-medium;
+                text-align: center;
+                margin-bottom: 30px;
+                font-size: 20px;
+
+                h2 {
+                    font-size: 22px;
+                    margin-bottom: 10px;
+                }
+
+                p {
+                    font-family: markpro-light;
+                    font-size: 14px;
+                }
             }
 
             &__fields {
@@ -41,6 +57,10 @@
                 }
             }
 
+            &__otp-section {
+                margin-bottom: 30px;
+            }
+
             &__footer {
                 display: flex;
                 flex-direction: column;
@@ -51,16 +71,14 @@
                 }
 
                 p {
-                    font-family: markpro;
+                    &.enquiry {
+                        font-family: markpro;
+                        margin-bottom: 10px;
+                    }
 
-                    span {
-                        color: $light-blue;
-                        text-decoration: underline;
-                        cursor: pointer;
-
-                        &:hover {
-                            opacity: 0.5;
-                        }
+                    &.copyright-info {
+                        font-family: markpro-light;
+                        font-size: 12px;
                     }
                 }
             }
@@ -79,7 +97,16 @@
                     border: 1px solid $light-ash;
                     height: 50px;
                     border-radius: 5px;
-                    max-width: 320px;
+                }
+            }
+
+            .link {
+                color: $light-blue;
+                text-decoration: underline;
+                cursor: pointer;
+
+                &:hover {
+                    opacity: 0.5;
                 }
             }
 
