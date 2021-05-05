@@ -10,10 +10,10 @@ const Signup = () => {
         setActiveSection(2);
     };
 
-    const handleConfirmOtp = (e) => {
-        e.preventDefault();
-        setActiveSection(3);
-    };
+    // const handleConfirmOtp = (e) => {
+    //     e.preventDefault();
+    //     setActiveSection(3);
+    // };
     return (
         <div id="signup">
             <div className="signup">
@@ -21,7 +21,7 @@ const Signup = () => {
                     <img src={logo} alt="" />
                 </header>
 
-                {activeSection == 1 && (
+                {activeSection === 1 && (
                     <form className="signup__body" noValidate onSubmit={handleSubmitPersonalDetails} style={{ width: "100%" }}>
                         <section className="signup__body__title">
                             <h2>Tell us about yourself</h2>
@@ -74,7 +74,7 @@ const Signup = () => {
                     </form>
                 )}
 
-                {activeSection == 2 && (
+                {activeSection === 2 && (
                     <form className="signup__body" onSubmit={() => setActiveSection(3)}>
                         <section className="signup__body__title">
                             <h2>Verify your Phone Number</h2>
@@ -88,9 +88,7 @@ const Signup = () => {
                                 <label htmlFor="">OTP</label>
                                 <input type="text" />
                             </div>
-                            <a href="" className="link">
-                                Resend Otp
-                            </a>
+                            <span className="link">Resend Otp</span>
                         </section>
 
                         <section className="signup__body__footer">
@@ -105,7 +103,7 @@ const Signup = () => {
                     </form>
                 )}
 
-                {activeSection == 3 && (
+                {activeSection === 3 && (
                     <form className="signup__body" noValidate onSubmit={() => setActiveSection(4)} style={{ width: "100%" }}>
                         <section className="signup__body__title">
                             <h2>Tell us about your business</h2>
@@ -158,7 +156,7 @@ const Signup = () => {
                     </form>
                 )}
 
-                {activeSection == 4 && (
+                {activeSection === 4 && (
                     <form className="signup__body" onSubmit={() => setActiveSection(1)}>
                         <section className="signup__body__title">
                             <h2>Bank Verification Number</h2>
@@ -172,9 +170,7 @@ const Signup = () => {
                                 <label htmlFor="">BVN</label>
                                 <input type="text" />
                             </div>
-                            <a href="" className="link">
-                                Can't remember your BVN?
-                            </a>
+                            <span className="link">Can't remember your BVN?</span>
                         </section>
 
                         <section className="signup__body__footer">
