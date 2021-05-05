@@ -1,0 +1,47 @@
+$light-ash: #cdd1de;
+$dark-blue: #1221ac;
+$light-blue: #1554f6;
+$lightest-blue: #f7f8fa;
+
+$tablet-breakpoint: 768px;
+$laptop-breakpoint: 992px;
+$xl-breakpoint: 1440px;
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: markpro;
+    src: url(./assets/fonts/MARKPRO.OTF);
+}
+@font-face {
+    font-family: markpro-black;
+    src: url(./assets/fonts/MARKPROBLACK.OTF);
+}
+@font-face {
+    font-family: markpro-bold;
+    src: url(./assets/fonts/MARKPROBOLD.OTF);
+}
+@font-face {
+    font-family: markpro-book;
+    src: url(./assets/fonts/MARKPROBOOK.OTF);
+}
+@font-face {
+    font-family: markpro-extralight;
+    src: url(./assets/fonts/MARKPROEXTRALIGHT.OTF);
+}
+@font-face {
+    font-family: markpro-heavy;
+    src: url(./assets/fonts/MARKPROHEAVY.OTF);
+}
+@font-face {
+    font-family: markpro-light;
+    src: url(./assets/fonts/MARKPROLIGHT.OTF);
+}
+@font-face {
+    font-family: markpro-medium;
+    src: url(./assets/fonts/MARKPROMEDIUM.OTF);
+}
