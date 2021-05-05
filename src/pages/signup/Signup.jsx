@@ -98,7 +98,7 @@ const Signup = () => {
                                 Next
                             </button>
                             <p className="enquiry">
-                                Already have an account? <span>Sign in</span>
+                                Already have an account? <span className="link">Sign in</span>
                             </p>
                             <p className="copyright-info">&copy; payhippo.ng | Re-Engineering Digital SME Lending | All rights reserved</p>
                         </section>
@@ -182,7 +182,7 @@ const Signup = () => {
                                 Next
                             </button>
                             <p className="enquiry">
-                                Already have an account? <span>Sign in</span>
+                                Already have an account? <span className="link">Sign in</span>
                             </p>
                             <p className="copyright-info">&copy; payhippo.ng | Re-Engineering Digital SME Lending | All rights reserved</p>
                         </section>
