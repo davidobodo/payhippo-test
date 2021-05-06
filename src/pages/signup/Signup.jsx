@@ -1,19 +1,112 @@
-import React, { useState } from "react";
+import React, { useReducer } from "react";
 
 import logo from "../../assets/images/PayhippoLogo.png";
+
+import CustomSelect from "../../components/customSelect/CustomSelect";
 import "./Signup.scss";
 
+const initialState = {
+    activeSection: 1
+};
+
+const reducer = (state, action) => {
+    switch (action.type) {
+        case "increase_section":
+            return {
+                ...state,
+                activeSection: state.activeSection + 1
+            };
+        default:
+            throw new Error();
+    }
+};
+
 const Signup = () => {
-    const [activeSection, setActiveSection] = useState(1);
-    const handleSubmitPersonalDetails = (e) => {
-        e.preventDefault();
-        setActiveSection(2);
-    };
+    const [state, dispatch] = useReducer(reducer, initialState);
+    const { activeSection } = state;
+    // const [activeSection, setActiveSection] = useState(1);
+
+    // const handleSubmitPersonalDetails = (e) => {
+    //     e.preventDefault();
+    //     setActiveSection(2);
+    // };
 
     // const handleConfirmOtp = (e) => {
     //     e.preventDefault();
     //     setActiveSection(3);
     // };
+
+    const GENDER_OPTIONS = [
+        {
+            value: "male",
+            label: "Male"
+        },
+        {
+            value: "female",
+            label: "Female"
+        }
+    ];
+
+    const MARITAL_STATUS = [
+        {
+            value: "married",
+            label: "Married"
+        },
+        {
+            value: "single",
+            label: "Single"
+        },
+        {
+            value: "widowed",
+            label: "Widowed"
+        }
+    ];
+
+    const HAQ = [
+        {
+            value: "fscl",
+            label: "First School Leaving Certificate"
+        },
+        {
+            value: "ssce",
+            label: "SSCE"
+        },
+        {
+            value: "ond",
+            label: "OND"
+        },
+        {
+            value: "bd/hnd",
+            label: "Bachelors Degree/HND"
+        },
+        {
+            value: "masters",
+            label: "Masters Degree"
+        },
+        {
+            value: "phd",
+            label: "PHD"
+        },
+        {
+            value: "other",
+            label: "Other"
+        }
+    ];
+
+    const BUSINESS_TYPE = [
+        {
+            value: "-",
+            label: "options are just placeholders, select one"
+        },
+        {
+            value: "one",
+            label: "One"
+        },
+        {
+            value: "two",
+            label: "Two"
+        }
+    ];
     return (
         <div id="signup">
             <div className="signup">
@@ -22,7 +115,7 @@ const Signup = () => {
                 </header>
 
                 {activeSection === 1 && (
-                    <form className="signup__body" noValidate onSubmit={handleSubmitPersonalDetails} style={{ width: "100%" }}>
+                    <form className="signup__body" noValidate onSubmit={() => dispatch({ type: "increase_section" })} style={{ width: "100%" }}>
                         <section className="signup__body__title">
                             <h2>Tell us about yourself</h2>
                             <p>(Personal Details)</p>
@@ -38,7 +131,8 @@ const Signup = () => {
                             </div>
                             <div className="form-field">
                                 <label htmlFor="">Gender</label>
-                                <input type="text" />
+
+                                <CustomSelect options={GENDER_OPTIONS} placeholder="Select gender" />
                             </div>
                             <div className="form-field">
                                 <label htmlFor="">Date of Birth</label>
@@ -46,11 +140,11 @@ const Signup = () => {
                             </div>
                             <div className="form-field">
                                 <label htmlFor="">Marital Status</label>
-                                <input type="text" />
+                                <CustomSelect options={MARITAL_STATUS} placeholder="Select your marital status" />
                             </div>
                             <div className="form-field">
                                 <label htmlFor="">Highest attained qualification</label>
-                                <input type="text" />
+                                <CustomSelect options={HAQ} placeholder="Select your highest attained qualification" />
                             </div>
                             <div className="form-field">
                                 <label htmlFor="">Email</label>
@@ -63,7 +157,7 @@ const Signup = () => {
                         </section>
 
                         <section className="signup__body__footer">
-                            <button className="btn btn-blue" type="submit" onClick={handleSubmitPersonalDetails}>
+                            <button className="btn btn-blue" type="submit" onClick={() => dispatch({ type: "increase_section" })}>
                                 Next
                             </button>
                             <p className="enquiry">
@@ -75,7 +169,7 @@ const Signup = () => {
                 )}
 
                 {activeSection === 2 && (
-                    <form className="signup__body" onSubmit={() => setActiveSection(3)}>
+                    <form className="signup__body" onSubmit={() => dispatch({ type: "increase_section" })}>
                         <section className="signup__body__title">
                             <h2>Verify your Phone Number</h2>
                             <p>
@@ -92,7 +186,7 @@ const Signup = () => {
                         </section>
 
                         <section className="signup__body__footer">
-                            <button className="btn btn-blue" type="submit" onClick={() => setActiveSection(3)}>
+                            <button className="btn btn-blue" type="submit" onClick={() => dispatch({ type: "increase_section" })}>
                                 Next
                             </button>
                             <p className="enquiry">
@@ -104,7 +198,7 @@ const Signup = () => {
                 )}
 
                 {activeSection === 3 && (
-                    <form className="signup__body" noValidate onSubmit={() => setActiveSection(4)} style={{ width: "100%" }}>
+                    <form className="signup__body" noValidate onSubmit={() => dispatch({ type: "increase_section" })} style={{ width: "100%" }}>
                         <section className="signup__body__title">
                             <h2>Tell us about your business</h2>
                             <p>(Business Details)</p>
@@ -120,7 +214,7 @@ const Signup = () => {
                             </div>
                             <div className="form-field">
                                 <label htmlFor="">Type of Business</label>
-                                <input type="text" />
+                                <CustomSelect options={BUSINESS_TYPE} placeholder="Select business type" />
                             </div>
                             <div className="form-field">
                                 <label htmlFor="">RC Number</label>
@@ -136,16 +230,16 @@ const Signup = () => {
                             </div>
                             <div className="form-field">
                                 <label htmlFor="">Business Address</label>
-                                <input type="text" />
+                                <CustomSelect options={BUSINESS_TYPE} placeholder="Select business address" />
                             </div>
                             <div className="form-field">
                                 <label htmlFor="">Business Owner Home Address</label>
-                                <input type="text" />
+                                <CustomSelect options={BUSINESS_TYPE} placeholder="Select business ownerhome address" />
                             </div>
                         </section>
 
                         <section className="signup__body__footer">
-                            <button className="btn btn-blue" type="submit" onClick={() => setActiveSection(4)}>
+                            <button className="btn btn-blue" type="submit" onClick={() => dispatch({ type: "increase_section" })}>
                                 Next
                             </button>
                             <p className="enquiry">
@@ -157,7 +251,7 @@ const Signup = () => {
                 )}
 
                 {activeSection === 4 && (
-                    <form className="signup__body" onSubmit={() => setActiveSection(1)}>
+                    <form className="signup__body" onSubmit={() => console.log("HERE")}>
                         <section className="signup__body__title">
                             <h2>Bank Verification Number</h2>
                             <p>
@@ -174,7 +268,7 @@ const Signup = () => {
                         </section>
 
                         <section className="signup__body__footer">
-                            <button className="btn btn-blue" type="submit" onClick={() => setActiveSection(1)}>
+                            <button className="btn btn-blue" type="submit" onClick={() => console.log("THERE")}>
                                 Next
                             </button>
                             <p className="enquiry">
