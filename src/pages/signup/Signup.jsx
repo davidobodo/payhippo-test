@@ -1,8 +1,7 @@
 import React, { useReducer, useRef, useEffect } from "react";
-
-import logo from "../../assets/images/PayhippoLogo.png";
-
 import CustomSelect from "../../components/customSelect/CustomSelect";
+import logo from "../../assets/images/PayhippoLogo.png";
+import { GENDER_OPTIONS, MARITAL_STATUS, HAQ, BUSINESS_TYPE } from "./Signup.constants";
 import "./Signup.scss";
 
 const initialState = {
@@ -32,82 +31,10 @@ const reducer = (state, action) => {
     }
 };
 
-const Signup = () => {
+const Signup = ({ handleChangePage }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const { activeSection, headerIsSticky } = state;
     const headerRef = useRef(null);
-
-    const GENDER_OPTIONS = [
-        {
-            value: "male",
-            label: "Male"
-        },
-        {
-            value: "female",
-            label: "Female"
-        }
-    ];
-
-    const MARITAL_STATUS = [
-        {
-            value: "married",
-            label: "Married"
-        },
-        {
-            value: "single",
-            label: "Single"
-        },
-        {
-            value: "widowed",
-            label: "Widowed"
-        }
-    ];
-
-    const HAQ = [
-        {
-            value: "fscl",
-            label: "First School Leaving Certificate"
-        },
-        {
-            value: "ssce",
-            label: "SSCE"
-        },
-        {
-            value: "ond",
-            label: "OND"
-        },
-        {
-            value: "bd/hnd",
-            label: "Bachelors Degree/HND"
-        },
-        {
-            value: "masters",
-            label: "Masters Degree"
-        },
-        {
-            value: "phd",
-            label: "PHD"
-        },
-        {
-            value: "other",
-            label: "Other"
-        }
-    ];
-
-    const BUSINESS_TYPE = [
-        {
-            value: "-",
-            label: "options are just placeholders, select one"
-        },
-        {
-            value: "one",
-            label: "One"
-        },
-        {
-            value: "two",
-            label: "Two"
-        }
-    ];
 
     const handleScrollScreen = () => {
         if (headerRef.current.getBoundingClientRect().top <= 0) {
@@ -122,6 +49,7 @@ const Signup = () => {
 
         return () => window.removeEventListener("scroll", handleScrollScreen);
     }, []);
+
     return (
         <div id="signup">
             <div className="signup">
@@ -137,36 +65,54 @@ const Signup = () => {
                         </section>
                         <section className="signup__body__fields">
                             <div className="form-field">
-                                <label htmlFor="">First name</label>
+                                <label htmlFor="">
+                                    <span className="asterik">*</span>
+                                    First name
+                                </label>
                                 <input type="text" />
                             </div>
                             <div className="form-field">
-                                <label htmlFor="">Last name</label>
+                                <label htmlFor="">
+                                    <span className="asterik">*</span>
+                                    Last name
+                                </label>
                                 <input type="text" />
                             </div>
                             <div className="form-field">
-                                <label htmlFor="">Gender</label>
+                                <label htmlFor="">
+                                    <span className="asterik">*</span>Gender
+                                </label>
 
                                 <CustomSelect options={GENDER_OPTIONS} placeholder="Select gender" />
                             </div>
                             <div className="form-field">
-                                <label htmlFor="">Date of Birth</label>
+                                <label htmlFor="">
+                                    <span className="asterik">*</span>Date of Birth
+                                </label>
                                 <input type="text" />
                             </div>
                             <div className="form-field">
-                                <label htmlFor="">Marital Status</label>
+                                <label htmlFor="">
+                                    <span className="asterik">*</span>Marital Status
+                                </label>
                                 <CustomSelect options={MARITAL_STATUS} placeholder="Select your marital status" />
                             </div>
                             <div className="form-field">
-                                <label htmlFor="">Highest attained qualification</label>
+                                <label htmlFor="">
+                                    <span className="asterik">*</span>Highest attained qualification
+                                </label>
                                 <CustomSelect options={HAQ} placeholder="Select" />
                             </div>
                             <div className="form-field">
-                                <label htmlFor="">Email</label>
+                                <label htmlFor="">
+                                    <span className="asterik">*</span>Email
+                                </label>
                                 <input type="text" />
                             </div>
                             <div className="form-field">
-                                <label htmlFor="">Phone Number</label>
+                                <label htmlFor="">
+                                    <span className="asterik">*</span>Phone Number
+                                </label>
                                 <input type="text" />
                             </div>
                         </section>
@@ -176,7 +122,10 @@ const Signup = () => {
                                 Next
                             </button>
                             <p className="enquiry">
-                                Already have an account? <span className="link">Sign in</span>
+                                Already have an account?{" "}
+                                <span className="link" onClick={handleChangePage}>
+                                    Sign in
+                                </span>
                             </p>
                             <p className="copyright-info">&copy; payhippo.ng | Re-Engineering Digital SME Lending | All rights reserved</p>
                         </section>
@@ -194,7 +143,9 @@ const Signup = () => {
 
                         <section className="signup__body__otp-section">
                             <div className="form-field">
-                                <label htmlFor="">OTP</label>
+                                <label htmlFor="">
+                                    <span className="asterik">*</span>OTP
+                                </label>
                                 <input type="text" />
                             </div>
                             <span className="link">Resend Otp</span>
@@ -205,7 +156,10 @@ const Signup = () => {
                                 Next
                             </button>
                             <p className="enquiry">
-                                Already have an account? <span className="link">Sign in</span>
+                                Already have an account?{" "}
+                                <span className="link" onClick={handleChangePage}>
+                                    Sign in
+                                </span>
                             </p>
                             <p className="copyright-info">&copy; payhippo.ng | Re-Engineering Digital SME Lending | All rights reserved</p>
                         </section>
@@ -220,15 +174,22 @@ const Signup = () => {
                         </section>
                         <section className="signup__body__fields">
                             <div className="form-field">
-                                <label htmlFor="">Business Name</label>
+                                <label htmlFor="">
+                                    {" "}
+                                    <span className="asterik">*</span>Business Name
+                                </label>
                                 <input type="text" />
                             </div>
                             <div className="form-field">
-                                <label htmlFor="">Business Phone Number</label>
+                                <label htmlFor="">
+                                    <span className="asterik">*</span>Business Phone Number
+                                </label>
                                 <input type="text" />
                             </div>
                             <div className="form-field">
-                                <label htmlFor="">Type of Business</label>
+                                <label htmlFor="">
+                                    <span className="asterik">*</span>Type of Business
+                                </label>
                                 <CustomSelect options={BUSINESS_TYPE} placeholder="Select business type" />
                             </div>
                             <div className="form-field">
@@ -244,11 +205,15 @@ const Signup = () => {
                                 <input type="text" />
                             </div>
                             <div className="form-field">
-                                <label htmlFor="">Business Address</label>
+                                <label htmlFor="">
+                                    <span className="asterik">*</span>Business Address
+                                </label>
                                 <CustomSelect options={BUSINESS_TYPE} placeholder="Select" />
                             </div>
                             <div className="form-field">
-                                <label htmlFor="">Business Owner Home Address</label>
+                                <label htmlFor="">
+                                    <span className="asterik">*</span>Business Owner Home Address
+                                </label>
                                 <CustomSelect options={BUSINESS_TYPE} placeholder="Select" />
                             </div>
                         </section>
@@ -258,7 +223,10 @@ const Signup = () => {
                                 Next
                             </button>
                             <p className="enquiry">
-                                Already have an account? <span className="link">Sign in</span>
+                                Already have an account?{" "}
+                                <span className="link" onClick={handleChangePage}>
+                                    Sign in
+                                </span>
                             </p>
                             <p className="copyright-info">&copy; payhippo.ng | Re-Engineering Digital SME Lending | All rights reserved</p>
                         </section>
@@ -276,7 +244,9 @@ const Signup = () => {
 
                         <section className="signup__body__otp-section">
                             <div className="form-field">
-                                <label htmlFor="">BVN</label>
+                                <label htmlFor="">
+                                    <span className="asterik">*</span>BVN
+                                </label>
                                 <input type="text" />
                             </div>
                             <span className="link">Can't remember your BVN?</span>
@@ -287,7 +257,10 @@ const Signup = () => {
                                 Next
                             </button>
                             <p className="enquiry">
-                                Already have an account? <span className="link">Sign in</span>
+                                Already have an account?{" "}
+                                <span className="link" onClick={handleChangePage}>
+                                    Sign in
+                                </span>
                             </p>
                             <p className="copyright-info">&copy; payhippo.ng | Re-Engineering Digital SME Lending | All rights reserved</p>
                         </section>
