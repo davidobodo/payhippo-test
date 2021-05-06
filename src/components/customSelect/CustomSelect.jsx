@@ -1,5 +1,6 @@
 import React from "react";
 import Select from "react-select";
+import "./CustomSelect.scss";
 
 const CustomSelect = ({ options, onChange, value, placeholder }) => {
     const customStyles = {
@@ -20,7 +21,7 @@ const CustomSelect = ({ options, onChange, value, placeholder }) => {
         control: () => ({
             border: "1px solid #cdd1de",
             display: "flex",
-            height: "50px",
+            // height: "50px",
             borderRadius: "5px",
             backgroundColor: "#fff",
             cursor: "pointer"
@@ -61,7 +62,7 @@ const CustomSelect = ({ options, onChange, value, placeholder }) => {
         })
     };
 
-    return <Select styles={customStyles} options={options} onChange={onChange} value={value} placeholder={placeholder} />;
+    return <Select styles={customStyles} options={options} onChange={onChange} value={value} placeholder={placeholder} className="select-wrapper" />;
 };
 
 export default CustomSelect;

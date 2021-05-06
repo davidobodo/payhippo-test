@@ -2,29 +2,54 @@
 
 #signup {
     .signup {
+        padding-top: 60px;
+        padding-bottom: 60px;
+        background-color: $lightest-blue;
+        min-height: 100vh;
+
         @media (min-width: $tablet-breakpoint) {
-            padding: 50px 200px 100px;
             display: flex;
             flex-direction: column;
+            background-color: #fff;
+            min-height: auto;
         }
 
         &__header {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 30px;
+            margin-bottom: 10px;
+
+            @media (min-width: $tablet-breakpoint) {
+                margin-bottom: 30px;
+                position: static;
+            }
+
+            &.sticky {
+                position: sticky;
+                top: 0;
+                box-shadow: 0px 4px 13px 1px rgba(0, 0, 0, 0.08);
+                background-color: #fff;
+                padding: 15px;
+                z-index: 10;
+            }
 
             img {
-                width: 200px;
+                width: 150px;
+
+                @media (min-width: $tablet-breakpoint) {
+                    width: 200px;
+                }
             }
         }
 
         &__body {
-            background-color: $lightest-blue;
             border-radius: 10px;
-            box-shadow: 0px 4px 13px 1px rgba(0, 0, 0, 0.08);
+            padding: 20px 30px;
 
             @media (min-width: $tablet-breakpoint) {
+                box-shadow: 0px 4px 13px 1px rgba(0, 0, 0, 0.08);
+                background-color: $lightest-blue;
                 padding: 60px;
                 max-width: 1040px;
                 margin: auto;
@@ -34,16 +59,23 @@
                 font-family: markpro-medium;
                 text-align: center;
                 margin-bottom: 30px;
-                font-size: 20px;
 
                 h2 {
-                    font-size: 22px;
+                    font-size: 20px;
                     margin-bottom: 10px;
+
+                    @media (min-width: $tablet-breakpoint) {
+                        font-size: 22px;
+                    }
                 }
 
                 p {
                     font-family: markpro-light;
-                    font-size: 14px;
+                    font-size: 12px;
+
+                    @media (min-width: $tablet-breakpoint) {
+                        font-size: 14px;
+                    }
                 }
             }
 
@@ -74,11 +106,17 @@
                     &.enquiry {
                         font-family: markpro;
                         margin-bottom: 10px;
+                        font-size: 12px;
+
+                        @media (min-width: $tablet-breakpoint) {
+                            font-size: 14px;
+                        }
                     }
 
                     &.copyright-info {
                         font-family: markpro-light;
                         font-size: 12px;
+                        text-align: center;
                     }
                 }
             }
@@ -86,20 +124,34 @@
             .form-field {
                 display: flex;
                 flex-direction: column;
-                margin-bottom: 20px;
+                margin-bottom: 30px;
+
+                @media (min-width: $tablet-breakpoint) {
+                    margin-bottom: 20px;
+                }
 
                 label {
                     margin-bottom: 10px;
                     font-family: markpro-medium;
+                    font-size: 14px;
+
+                    @media (min-width: $tablet-breakpoint) {
+                        font-size: 16px;
+                    }
                 }
 
                 input {
                     border: 1px solid $light-ash;
-                    height: 50px;
                     border-radius: 5px;
                     padding: 0px 15px;
-                    font-size: 16px;
                     font-family: "markpro";
+                    font-size: 14px;
+                    height: 40px;
+
+                    @media (min-width: $tablet-breakpoint) {
+                        height: 50px;
+                        font-size: 16px;
+                    }
                 }
             }
 
@@ -108,6 +160,12 @@
                 text-decoration: underline;
                 cursor: pointer;
                 font-family: markpro;
+                font-size: 12px;
+                text-align: center;
+
+                @media (min-width: $tablet-breakpoint) {
+                    font-size: 14px;
+                }
 
                 &:hover {
                     opacity: 0.5;
@@ -115,12 +173,19 @@
             }
 
             .btn {
-                height: 50px;
                 border-radius: 5px;
                 padding: 0px 70px;
                 border: 0px;
                 cursor: pointer;
                 font-family: markpro-medium;
+                font-size: 14px;
+                height: 40px;
+                padding: 0px 55px;
+
+                @media (min-width: $tablet-breakpoint) {
+                    height: 50px;
+                    font-size: 16px;
+                }
             }
 
             .btn-blue {

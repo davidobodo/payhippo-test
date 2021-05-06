@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useRef, useEffect } from "react";
 
 import logo from "../../assets/images/PayhippoLogo.png";
 
@@ -6,7 +6,8 @@ import CustomSelect from "../../components/customSelect/CustomSelect";
 import "./Signup.scss";
 
 const initialState = {
-    activeSection: 1
+    activeSection: 1,
+    headerIsSticky: false
 };
 
 const reducer = (state, action) => {
@@ -16,6 +17,16 @@ const reducer = (state, action) => {
                 ...state,
                 activeSection: state.activeSection + 1
             };
+        case "stick_header":
+            return {
+                ...state,
+                headerIsSticky: true
+            };
+        case "unstick_header":
+            return {
+                ...state,
+                headerIsSticky: false
+            };
         default:
             throw new Error();
     }
@@ -23,18 +34,8 @@ const reducer = (state, action) => {
 
 const Signup = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
-    const { activeSection } = state;
-    // const [activeSection, setActiveSection] = useState(1);
-
-    // const handleSubmitPersonalDetails = (e) => {
-    //     e.preventDefault();
-    //     setActiveSection(2);
-    // };
-
-    // const handleConfirmOtp = (e) => {
-    //     e.preventDefault();
-    //     setActiveSection(3);
-    // };
+    const { activeSection, headerIsSticky } = state;
+    const headerRef = useRef(null);
 
     const GENDER_OPTIONS = [
         {
@@ -107,10 +108,24 @@ const Signup = () => {
             label: "Two"
         }
     ];
+
+    const handleScrollScreen = () => {
+        if (headerRef.current.getBoundingClientRect().top <= 0) {
+            dispatch({ type: "stick_header" });
+        } else {
+            dispatch({ type: "unstick_header" });
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener("scroll", handleScrollScreen);
+
+        return () => window.removeEventListener("scroll", handleScrollScreen);
+    }, []);
     return (
         <div id="signup">
             <div className="signup">
-                <header className="signup__header">
+                <header className={headerIsSticky ? "signup__header sticky" : `signup__header`} ref={headerRef}>
                     <img src={logo} alt="" />
                 </header>
 
@@ -144,7 +159,7 @@ const Signup = () => {
                             </div>
                             <div className="form-field">
                                 <label htmlFor="">Highest attained qualification</label>
-                                <CustomSelect options={HAQ} placeholder="Select your highest attained qualification" />
+                                <CustomSelect options={HAQ} placeholder="Select" />
                             </div>
                             <div className="form-field">
                                 <label htmlFor="">Email</label>
@@ -230,11 +245,11 @@ const Signup = () => {
                             </div>
                             <div className="form-field">
                                 <label htmlFor="">Business Address</label>
-                                <CustomSelect options={BUSINESS_TYPE} placeholder="Select business address" />
+                                <CustomSelect options={BUSINESS_TYPE} placeholder="Select" />
                             </div>
                             <div className="form-field">
                                 <label htmlFor="">Business Owner Home Address</label>
-                                <CustomSelect options={BUSINESS_TYPE} placeholder="Select business ownerhome address" />
+                                <CustomSelect options={BUSINESS_TYPE} placeholder="Select" />
                             </div>
                         </section>
 
