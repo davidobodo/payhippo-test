@@ -18,7 +18,7 @@ const Signup = ({ handleChangePage }) => {
     //-----------------------------------------------------------------
     //STATE
     //-----------------------------------------------------------------
-    const [activeSection, setActiveSection] = useState(1);
+    const [activeSection, setActiveSection] = useState(3);
     const [isHeaderSticky, setIsHeaderSticky] = useState(false);
 
     //-----------------------------------------------------------------
@@ -53,16 +53,24 @@ const Signup = ({ handleChangePage }) => {
                 </header>
 
                 {/* Personal Details */}
-                {activeSection === 1 && <PersonalDetails handleChangeSection={handleChangeSection} handleChangePage={handleChangePage} />}
+                {activeSection === 1 && (
+                    <PersonalDetails handleChangeSection={handleChangeSection} handleChangePage={handleChangePage} />
+                )}
 
                 {/* Otp code */}
-                {activeSection === 2 && <OtpDetails handleChangeSection={handleChangeSection} handleChangePage={handleChangePage} />}
+                {activeSection === 2 && (
+                    <OtpDetails handleChangeSection={handleChangeSection} handleChangePage={handleChangePage} />
+                )}
 
                 {/* Business Details */}
-                {activeSection === 3 && <BusinessDetails handleChangeSection={handleChangeSection} handleChangePage={handleChangePage} />}
+                {activeSection === 3 && (
+                    <BusinessDetails handleChangeSection={handleChangeSection} handleChangePage={handleChangePage} />
+                )}
 
                 {/* Bank Verification Number */}
-                {activeSection === 4 && <BvnDetails handleChangeSection={handleChangeSection} handleChangePage={handleChangePage} />}
+                {activeSection === 4 && (
+                    <BvnDetails handleChangeSection={handleChangeSection} handleChangePage={handleChangePage} />
+                )}
             </div>
         </div>
     );

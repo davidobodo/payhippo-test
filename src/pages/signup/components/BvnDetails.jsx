@@ -1,5 +1,6 @@
 import React from "react";
 import CustomInput from "../../../components/customInput/CustomInput";
+import CustomButton from "../../../components/customButton/CustomButton";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -29,18 +30,17 @@ const BvnDetails = ({ handleChangeSection, handleChangePage }) => {
 
             <section className="signup__body__otp-section">
                 <div className="form-field">
-                    <label htmlFor="">
-                        <span className="asterik">*</span>BVN
-                    </label>
+                    <label htmlFor="">BVN</label>
                     <CustomInput handleChange={handleChange} handleBlur={handleBlur} value={bvn} name="bvn" id="bvn" error={errors.bvn} touched={touched.bvn} />
                 </div>
                 <span className="link">Can't remember your BVN?</span>
             </section>
 
             <section className="signup__body__footer">
-                <button className="btn btn-blue" type="submit" onClick={() => console.log("THERE")}>
-                    Next
-                </button>
+                <CustomButton onClick={() => console.log("FINISHED")} disabled={!(formik.isValid && formik.dirty)}>
+                    Submit
+                </CustomButton>
+
                 <p className="enquiry">
                     Already have an account?{" "}
                     <span className="link" onClick={handleChangePage}>

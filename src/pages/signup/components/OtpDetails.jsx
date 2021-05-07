@@ -1,6 +1,7 @@
 import React from "react";
 
 import CustomInput from "../../../components/customInput/CustomInput";
+import CustomButton from "../../../components/customButton/CustomButton";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -31,18 +32,17 @@ const OtpDetails = ({ handleChangeSection, handleChangePage }) => {
 
             <section className="signup__body__otp-section">
                 <div className="form-field">
-                    <label htmlFor="">
-                        <span className="asterik">*</span>OTP
-                    </label>
+                    <label htmlFor="">OTP</label>
                     <CustomInput handleChange={handleChange} handleBlur={handleBlur} value={otp} name="otp" id="otp" error={errors.otp} touched={touched.otp} />
                 </div>
                 <span className="link">Resend Otp</span>
             </section>
 
             <section className="signup__body__footer">
-                <button className="btn btn-blue" type="submit" onClick={handleChangeSection}>
-                    Next
-                </button>
+                <CustomButton onClick={handleChangeSection} disabled={!(formik.isValid && formik.dirty)}>
+                    Submit
+                </CustomButton>
+
                 <p className="enquiry">
                     Already have an account?{" "}
                     <span className="link" onClick={handleChangePage}>

@@ -1,0 +1,31 @@
+@import "../../App.scss";
+
+.btn {
+    border-radius: 5px;
+    padding: 0px 70px;
+    border: 0px;
+    cursor: pointer;
+    font-family: markpro-medium;
+    font-size: 14px;
+    height: 40px;
+    padding: 0px 55px;
+
+    @media (min-width: $tablet-breakpoint) {
+        height: 50px;
+        font-size: 16px;
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+}
+
+.btn-blue {
+    background-color: $dark-blue;
+    color: #fff;
+
+    &:hover {
+        box-shadow: 0px 1px 6px 4px rgba(0, 0, 0, 0.12);
+    }
+}

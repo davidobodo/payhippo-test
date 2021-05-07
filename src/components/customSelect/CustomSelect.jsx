@@ -2,7 +2,7 @@ import React from "react";
 import Select from "react-select";
 import "./CustomSelect.scss";
 
-const CustomSelect = ({ options, onChange, value, placeholder }) => {
+const CustomSelect = ({ options, onChange, value, placeholder, error, touched, name, id, handleBlurDropdown }) => {
     const customStyles = {
         valueContainer: (provided, state) => ({
             ...provided,
@@ -62,7 +62,20 @@ const CustomSelect = ({ options, onChange, value, placeholder }) => {
         })
     };
 
-    return <Select styles={customStyles} options={options} onChange={onChange} value={value} placeholder={placeholder} className="select-wrapper" />;
+    return (
+        <div>
+            <Select
+                styles={customStyles}
+                options={options}
+                onChange={onChange}
+                value={value}
+                placeholder={placeholder}
+                className="select-wrapper"
+                onBlur={handleBlurDropdown}
+            />
+            {touched && error ? <h5 className="error-message">{error}</h5> : null}
+        </div>
+    );
 };
 
 export default CustomSelect;

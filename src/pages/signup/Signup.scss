@@ -47,6 +47,7 @@
         &__body {
             border-radius: 10px;
             padding: 20px 30px;
+            animation: fade-in 500ms ease-in-out forwards;
 
             @media (min-width: $tablet-breakpoint) {
                 box-shadow: 0px 4px 13px 1px rgba(0, 0, 0, 0.08);
@@ -54,6 +55,10 @@
                 padding: 60px;
                 max-width: 1040px;
                 margin: auto;
+            }
+
+            &.personal-details {
+                width: 100%;
             }
 
             &__title {
@@ -176,31 +181,6 @@
 
                 &:hover {
                     opacity: 0.5;
-                }
-            }
-
-            .btn {
-                border-radius: 5px;
-                padding: 0px 70px;
-                border: 0px;
-                cursor: pointer;
-                font-family: markpro-medium;
-                font-size: 14px;
-                height: 40px;
-                padding: 0px 55px;
-
-                @media (min-width: $tablet-breakpoint) {
-                    height: 50px;
-                    font-size: 16px;
-                }
-            }
-
-            .btn-blue {
-                background-color: $dark-blue;
-                color: #fff;
-
-                &:hover {
-                    box-shadow: 0px 1px 6px 4px rgba(0, 0, 0, 0.12);
                 }
             }
         }

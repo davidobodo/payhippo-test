@@ -3,6 +3,7 @@ import logo from "../../assets/images/PayhippoLogo.png";
 import "./Signin.scss";
 
 import CustomInput from "../../components/customInput/CustomInput";
+import CustomButton from "../../components/customButton/CustomButton";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -40,9 +41,9 @@ const Signin = ({ handleChangePage }) => {
                     </div>
 
                     <section className="signin__body__footer">
-                        <button className="btn btn-blue" type="submit" onClick={handleChangePage}>
-                            Next
-                        </button>
+                        <CustomButton onClick={handleChangePage} disabled={!(formik.isValid && formik.dirty)}>
+                            Submit
+                        </CustomButton>
                         <p className="enquiry">
                             Don't have an account?{" "}
                             <span className="link" onClick={handleChangePage}>
