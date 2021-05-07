@@ -5,9 +5,10 @@ import logo from "../../assets/images/PayhippoLogo.png";
 import { BUSINESS_TYPE } from "./Signup.constants";
 import "./Signup.scss";
 
-import "./components/PersonalDetails";
 import PersonalDetails from "./components/PersonalDetails";
 import OtpDetails from "./components/OtpDetails";
+import BusinessDetails from "./components/BusinessDetails";
+
 const Signup = ({ handleChangePage }) => {
     //-----------------------------------------------------------------
     //HELPER HOOKS
@@ -64,72 +65,7 @@ const Signup = ({ handleChangePage }) => {
                 {/* ------------------------------------------------------ */}
                 {/* Business Details */}
                 {/* ------------------------------------------------------ */}
-                {activeSection === 3 && (
-                    <form className="signup__body" noValidate onSubmit={handleChangeSection} style={{ width: "100%" }}>
-                        <section className="signup__body__title">
-                            <h2>Tell us about your business</h2>
-                            <p>(Business Details)</p>
-                        </section>
-                        <section className="signup__body__fields">
-                            <div className="form-field">
-                                <label htmlFor="">
-                                    {" "}
-                                    <span className="asterik">*</span>Business Name
-                                </label>
-                                <input type="text" />
-                            </div>
-                            <div className="form-field">
-                                <label htmlFor="">
-                                    <span className="asterik">*</span>Business Phone Number
-                                </label>
-                                <input type="text" />
-                            </div>
-                            <div className="form-field">
-                                <label htmlFor="">
-                                    <span className="asterik">*</span>Type of Business
-                                </label>
-                                <CustomSelect options={BUSINESS_TYPE} placeholder="Select business type" />
-                            </div>
-                            <div className="form-field">
-                                <label htmlFor="">RC Number</label>
-                                <input type="text" />
-                            </div>
-                            <div className="form-field">
-                                <label htmlFor="">CAC Number</label>
-                                <input type="text" />
-                            </div>
-                            <div className="form-field">
-                                <label htmlFor="">Other Lending platform you use</label>
-                                <input type="text" />
-                            </div>
-                            <div className="form-field">
-                                <label htmlFor="">
-                                    <span className="asterik">*</span>Business Address
-                                </label>
-                                <CustomSelect options={BUSINESS_TYPE} placeholder="Select" />
-                            </div>
-                            <div className="form-field">
-                                <label htmlFor="">
-                                    <span className="asterik">*</span>Business Owner Home Address
-                                </label>
-                                <CustomSelect options={BUSINESS_TYPE} placeholder="Select" />
-                            </div>
-                        </section>
-
-                        <section className="signup__body__footer">
-                            <button className="btn btn-blue" type="submit" onClick={handleChangeSection}>
-                                Next
-                            </button>
-                            <p className="enquiry">
-                                Already have an account?{" "}
-                                <span className="link" onClick={handleChangePage}>
-                                    Sign in
-                                </span>
-                            </p>
-                            <p className="copyright-info">&copy; payhippo.ng | Re-Engineering Digital SME Lending | All rights reserved</p>
-                        </section>
-                    </form>
-                )}
+                {activeSection === 3 && <BusinessDetails handleChangeSection={handleChangeSection} handleChangePage={handleChangePage} />}
 
                 {/* ------------------------------------------------------ */}
                 {/* Bank Verification Number */}
