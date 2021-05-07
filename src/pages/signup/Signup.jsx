@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
 
-import CustomSelect from "../../components/customSelect/CustomSelect";
 import logo from "../../assets/images/PayhippoLogo.png";
 import { BUSINESS_TYPE } from "./Signup.constants";
 import "./Signup.scss";
@@ -8,6 +7,7 @@ import "./Signup.scss";
 import PersonalDetails from "./components/PersonalDetails";
 import OtpDetails from "./components/OtpDetails";
 import BusinessDetails from "./components/BusinessDetails";
+import BvnDetails from "./components/BvnDetails";
 
 const Signup = ({ handleChangePage }) => {
     //-----------------------------------------------------------------
@@ -29,7 +29,7 @@ const Signup = ({ handleChangePage }) => {
     };
 
     const handleScrollScreen = () => {
-        if (headerRef.current.getBoundingClientRect().top <= 0) {
+        if (headerRef.current?.getBoundingClientRect().top <= 0) {
             setIsHeaderSticky(true);
         } else {
             setIsHeaderSticky(false);
@@ -52,57 +52,17 @@ const Signup = ({ handleChangePage }) => {
                     <img src={logo} alt="" />
                 </header>
 
-                {/* ------------------------------------------------------ */}
                 {/* Personal Details */}
-                {/* ------------------------------------------------------ */}
                 {activeSection === 1 && <PersonalDetails handleChangeSection={handleChangeSection} handleChangePage={handleChangePage} />}
 
-                {/* ------------------------------------------------------ */}
                 {/* Otp code */}
-                {/* ------------------------------------------------------ */}
                 {activeSection === 2 && <OtpDetails handleChangeSection={handleChangeSection} handleChangePage={handleChangePage} />}
 
-                {/* ------------------------------------------------------ */}
                 {/* Business Details */}
-                {/* ------------------------------------------------------ */}
                 {activeSection === 3 && <BusinessDetails handleChangeSection={handleChangeSection} handleChangePage={handleChangePage} />}
 
-                {/* ------------------------------------------------------ */}
                 {/* Bank Verification Number */}
-                {/* ------------------------------------------------------ */}
-                {activeSection === 4 && (
-                    <form className="signup__body" onSubmit={() => console.log("HERE")}>
-                        <section className="signup__body__title">
-                            <h2>Bank Verification Number</h2>
-                            <p>
-                                Industry regulations require we collect this <br /> information to verify your identity
-                            </p>
-                        </section>
-
-                        <section className="signup__body__otp-section">
-                            <div className="form-field">
-                                <label htmlFor="">
-                                    <span className="asterik">*</span>BVN
-                                </label>
-                                <input type="text" />
-                            </div>
-                            <span className="link">Can't remember your BVN?</span>
-                        </section>
-
-                        <section className="signup__body__footer">
-                            <button className="btn btn-blue" type="submit" onClick={() => console.log("THERE")}>
-                                Next
-                            </button>
-                            <p className="enquiry">
-                                Already have an account?{" "}
-                                <span className="link" onClick={handleChangePage}>
-                                    Sign in
-                                </span>
-                            </p>
-                            <p className="copyright-info">&copy; payhippo.ng | Re-Engineering Digital SME Lending | All rights reserved</p>
-                        </section>
-                    </form>
-                )}
+                {activeSection === 4 && <BvnDetails handleChangeSection={handleChangeSection} handleChangePage={handleChangePage} />}
             </div>
         </div>
     );

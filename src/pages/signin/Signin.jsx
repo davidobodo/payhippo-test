@@ -2,7 +2,26 @@ import React from "react";
 import logo from "../../assets/images/PayhippoLogo.png";
 import "./Signin.scss";
 
+import CustomInput from "../../components/customInput/CustomInput";
+
+import { useFormik } from "formik";
+import * as Yup from "yup";
+
 const Signin = ({ handleChangePage }) => {
+    //-----------------------------------------------------------------
+    //STATE
+    //-----------------------------------------------------------------
+    const formik = useFormik({
+        initialValues: {
+            phoneNumber: ""
+        },
+        validationSchema: Yup.object({
+            phoneNumber: Yup.string().required("Please enter your phone number")
+        })
+    });
+    const { handleBlur, handleChange, handleSubmit, values, touched, errors, setFieldValue } = formik;
+    const { phoneNumber } = values;
+
     return (
         <div id="signin">
             <div className="signin">
@@ -17,7 +36,7 @@ const Signin = ({ handleChangePage }) => {
 
                     <div className="form-field" style={{ marginBottom: "50px" }}>
                         <label htmlFor="">Phone Number</label>
-                        <input type="text" />
+                        <CustomInput handleChange={handleChange} handleBlur={handleBlur} value={phoneNumber} name="phoneNumber" id="phoneNumber" error={errors.phoneNumber} touched={touched.phoneNumber} />
                     </div>
 
                     <section className="signin__body__footer">
