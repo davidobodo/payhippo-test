@@ -7,6 +7,7 @@ import "./Signup.scss";
 
 import "./components/PersonalDetails";
 import PersonalDetails from "./components/PersonalDetails";
+import OtpDetails from "./components/OtpDetails";
 const Signup = ({ handleChangePage }) => {
     //-----------------------------------------------------------------
     //HELPER HOOKS
@@ -58,39 +59,7 @@ const Signup = ({ handleChangePage }) => {
                 {/* ------------------------------------------------------ */}
                 {/* Otp code */}
                 {/* ------------------------------------------------------ */}
-                {activeSection === 2 && (
-                    <form className="signup__body" onSubmit={handleChangeSection}>
-                        <section className="signup__body__title">
-                            <h2>Verify your Phone Number</h2>
-                            <p>
-                                We've sent an SMS message with your <br /> verification code to your phone number
-                            </p>
-                        </section>
-
-                        <section className="signup__body__otp-section">
-                            <div className="form-field">
-                                <label htmlFor="">
-                                    <span className="asterik">*</span>OTP
-                                </label>
-                                <input type="text" />
-                            </div>
-                            <span className="link">Resend Otp</span>
-                        </section>
-
-                        <section className="signup__body__footer">
-                            <button className="btn btn-blue" type="submit" onClick={handleChangeSection}>
-                                Next
-                            </button>
-                            <p className="enquiry">
-                                Already have an account?{" "}
-                                <span className="link" onClick={handleChangePage}>
-                                    Sign in
-                                </span>
-                            </p>
-                            <p className="copyright-info">&copy; payhippo.ng | Re-Engineering Digital SME Lending | All rights reserved</p>
-                        </section>
-                    </form>
-                )}
+                {activeSection === 2 && <OtpDetails handleChangeSection={handleChangeSection} handleChangePage={handleChangePage} />}
 
                 {/* ------------------------------------------------------ */}
                 {/* Business Details */}
