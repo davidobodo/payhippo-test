@@ -11,12 +11,14 @@ const CustomSelect = ({ options, onChange, value, placeholder, error, touched, n
         input: (provided, state) => ({
             ...provided,
             padding: "0px",
-            margin: "0px"
+            margin: "0px",
+            fontFamily: "markpro"
         }),
         option: (provided, state) => ({
             ...provided,
             cursor: "pointer",
-            paddingLeft: "15px"
+            paddingLeft: "15px",
+            fontFamily: "markpro"
         }),
         control: () => ({
             border: "1px solid #cdd1de",
@@ -30,7 +32,8 @@ const CustomSelect = ({ options, onChange, value, placeholder, error, touched, n
             ...provided,
             transform: "translateY(0px)",
             position: "static",
-            top: "0px"
+            top: "0px",
+            fontFamily: "markpro"
         }),
         indicatorSeparator: () => ({
             width: "0px"
@@ -58,7 +61,8 @@ const CustomSelect = ({ options, onChange, value, placeholder, error, touched, n
             transform: "translateY(0px)",
             position: "static",
             top: "0px",
-            cursor: "pointer"
+            cursor: "pointer",
+            fontFamily: "markpro"
         })
     };
 
