@@ -7,4 +7,18 @@
         height: 50px;
         font-size: 16px;
     }
+
+    input {
+        border: 1px solid $light-ash;
+        border-radius: 5px;
+        padding: 0px 15px;
+        font-family: "markpro";
+        font-size: 14px;
+        height: 40px;
+
+        @media (min-width: $tablet-breakpoint) {
+            height: 50px;
+            font-size: 16px;
+        }
+    }
 }

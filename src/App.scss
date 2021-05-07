@@ -45,3 +45,13 @@ $xl-breakpoint: 1440px;
     font-family: markpro-medium;
     src: url(./assets/fonts/MARKPROMEDIUM.OTF);
 }
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
