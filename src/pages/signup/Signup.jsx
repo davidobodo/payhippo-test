@@ -18,7 +18,7 @@ const Signup = ({ handleChangePage }) => {
     //-----------------------------------------------------------------
     //STATE
     //-----------------------------------------------------------------
-    const [activeSection, setActiveSection] = useState(3);
+    const [activeSection, setActiveSection] = useState(1);
     const [isHeaderSticky, setIsHeaderSticky] = useState(false);
 
     //-----------------------------------------------------------------
